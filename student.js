@@ -1,164 +1,60 @@
-const mongoose = require('monogoose')
-const PresentingComplaintsSchema = new mongoose.Schema({
-    HasDysmorphicFeatures:{type:String},
-    SmallSizedHead:{type:String},
-    AbleToWalkAndRun:{type:String},
-    NoAgeAppropriateComprehensionAndSpechDevelopment:{type:String},
-    ReachesGraspsAndManupulatesTheObject:{type:String},
-    EmotionallyAttachedToParentsAndRecognisesAllFamilyMembers:{type:String},
-    HasAdequateEyeContactAndSocialSmile:{type:String},
-    EatesSelf:{type:String},
-    IndicatesTheToiletNeeds:{type:String}
-})
-const HistorySchema = new mongoose.Schema({
-    ChromosomalAberrations:{type:String},
-    RhIncompatibility:{type:String},
-    GeneticAberrations:{type:String},
-    Consanguinity:{type:String},
-    ThreatenedAbortion:{type:String},
-    PootentiallyHarmfulMedication:{type:String},
-    AntenatalCheckUps:{type:String},
-    SignificantAccidentsInjury:{type:String},
-    Infections:{type:String},
-    Pregnancy:{type:String},
-    AttemptedAdortion:{type:String},
-    Nutrition:{type:String},
-    PsychologicalTrama:{type:String},
-    AmnioticFluid:{type:String},
-    Irradiation:{type:String},
-    Nicotine:{type:String},
-    Alcohol:{type:String},
-    AgeAtConception:{type:String},
-    Hypertension:{type:String},
-    Diabetes:{type:String},
-    Jaundice:{type:String},
-    FetalMovement:{type:String},
-    BleedingDuringLatePregnancy:{type:String},
-    LabourDuration:{type:String},
-    ProlapsedCord:{type:String},
-    CordAroundNeck:{type:String},
-    MultiplePregnancies:{type:String},
-    FeedingProblem:{type:String},
-    Convulsion:{type:String},
-    ColorOftheBaby:{type:String},
-    SignificantInjury:{type:String},
-    DeliveryPlace:{type:String},
-    Term:{type:String},
-    DeliveryType:{type:String},
-    AbnormalPresentation:{type:String},
-    RespiratoryDistress:{type:String},//Jaundice:{} was repeated
-    DeliveryConductedBy:{type:String},
-    LabourInduction:{type:String},
-    BirthCry:{type:String},//infections{} was repeated
-    SeperationFromMotherImmediatelyAfterDelivery:{type:String},//Jaundice repeated
-    ThyroidDysfunctions:{type:String},
-    NutritionlDisorders:{type:String},//Convulsions,Infections
-    SignificantHeadInjury:{type:String}
-})
-const  FamilyHistorySchema = new mongoose.Schema({
-    TypeOfFamily:{type:String},
-    MentalRetardation:{type:String},
-    Genogram:{type:String},
-    Consanguinity:{type:String},//repeated somewear else
-    SeizuresOrConvulsions:{type:String},
-    HearingProblems:{type:String},
-    SpeechProblems:{type:String},
-    MentalIllness:{type:String},
-    AutismOrSpectrumDisorde:{type:String},
-    VisualProblem:{type:String},
-    LocomotorProblem:{type:String},
-    AnyFamilyHistoryOfDelayDisabilityDiorderDiseaseDeficiency:{type:String},
-    LearningDisabilities:{type:String},
-    FamilyInvolvementIn:{type:String},
-    PositiveIssuesWithNeighborhoodBecauseOfTheClient:{type:String},
-    NeighborhoodParticipation:{type:String},
-    PersonalNeedsOfTheClient:{type:String},
-    VisitsToTheFamilyByOthers:{type:String},
-    FamilysVisitsOutside:{type:String},
-    PlayAndLeisureTimeActivites:{type:String},
-    EducationalActivites:{type:String},
-    SupportOfExtendedFamily:{type:String},
-    NegativeIssuesWithNeighborhoodBecauseOfTheClient:{type:String},
-    DiscontinuedSchool:{type:String},
-    EducationalHistory:{type:String},
-    TeacherReport:{type:String},//TeacherReportSchoolReport(in case of non avail)
-    OverallPerfonnance:{type:String},
-    TypeOfSchooling:{type:String},
-    IfYesReasonForDiscountinuingSchooling:{type:String},
-    AgeOfAdmissinonIntoSchoolInYears:{type:String},//AgeOfAdmissionIntoSchool(in Year)
-    InvolvementInPlay:{type:String},
-    ObservesOthersPlaying:{type:String},
-    PlayBehaviour:{type:String},
-    Periodicity:{type:String},
-    AgeOfAttainmentOfMenarche:{type:String},
-    AttainedMenarche:{type:String},
-    MenstrualHistory:{type:String},
-    AnySignificantDetails:{type:String},
-    VocationalTrainging:{type:String},
-    OccupationalHistory:{type:String},//OccupationalHistory
-    Employment:{type:String}
-})
-const DevelopmentHistorySchema = new mongoose.Schema({
-    HeadControl3_5Months:{type:String},
-    Rolling3_5Months:{type:String},
-    IndependentSitting6_8Months:{type:String},
-    Crawling6_8Months:{type:String},
-    Walking11_14Months:{type:String},
-    BilateralHoldingOfToys3_6Months:{type:String},
-    HoldingSmallItemsWithFingerAndThumb6_9Months:{type:String},
-    ScribblingWithACrayon12_18Months:{type:String},
-    Babbling4_8Months:{type:String},
-    FirstWords11_12Months:{type:String},
-    TwoWordsPhrases18_24Months:{type:String},
-    Sentences2_3Moths:{type:String},//2yrs6months-3years
-    SmilesAtOthers3_4Months:{type:String},
-    RespondsToName7_12Months:{type:String},
-    FeedsSelf3_4Yrs:{type:String},//Years -> Yrs
-    Cognitive:{type:String},
-    Motor:{type:String},
-    SpeechAndLanguage:{type:String},
-    Social:{type:String},
-    SignificantMedicalIllness:{type:String},
-    SignificantSurgicalIllness:{type:String},
-    SignificantPsycologicalIllness:{type:String},
-    AnyNegativeReactions:{type:String}//Any negative reactions to medication
-})
-const stdSchem = new mongoose.Schema({
-    RegnNo:{
+const mongoose = require('mongoose')
+const report = new mongoose.Schema({
+    term:{
         type:String,
-        unique:true,
-        required:true
-    },
-    RegeDate:{
-        type:Date,
-        required:true
-    },//Date
-    DOB:{type:Date},
-    Name:{type:String},
-    Sex:{
-        type:String,
-        required:true
-    },
-    Information:{type:String},
-    Education:{type:String},
-    RefBy:{type:String},
-    Occupation:{type:String},
-    AadharNo:{
-        type:Number,
         required:true,
+        unique:true
     },
-    PaymentTyoe:{type:String},
-    MobileNo:{type:Number},
-    PurposeVist:{type:String},
-    PreviousConsultationAndTreatment:{type:String},
-    IfYesNatureOfConsultations:{type:String},
-    TreatmentUnderGone:{type:String},
-    TypeOfTreatment:{type:String},
-    TypeOfTreatment:{type:String},
-    Theraputic:{type:String},
-    HistoryOfPresentCondition:{type:[String]},
-    PresentingComplaints:PresentingComplaintsSchema ,
-    History:HistorySchema,
-    FamilyHistory:FamilyHistorySchema,
-    DevelopmentHistory:evelopmentHistorySchema,
+    report:{
+        type:String,
+        default:'No Report Needed'
+    }
 })
+const StudentSchem = new mongoose.Schema({
+    RegNo:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    Class:{
+        type:String,
+        required:true
+    },
+    Year:{
+        type:Number,
+        enum:[1,2,3],
+        required:true
+    },
+    PersonalQs:{type:[String]},
+    SocialQs:{type:[String]},
+    AcademicQs:{type:[String]},
+    OccupationalQs:{type:[String]},
+    RecreationalQs:{type:[String]},
+    PersonalAns:{
+        type:[String],
+        required:true,
+        enum:["Yes","No","C_p1","C_p2","NA","NE"],
+    },
+    SocailAns:{
+        type:[String],
+        required:true,
+        enum:["Yes","No","C_p1","C_p2","NA","NE"],
+    },
+    AcademicAns:{
+        type:[String],
+        required:true,
+        enum:["Yes","No","C_p1","C_p2","NA","NE"],
+    },
+    OccupationalAns:{
+        type:[String],
+        required:true,
+        enum:["Yes","No","C_p1","C_p2","NA","NE"],
+    },
+    RecreationalAns:{
+        type:[String],
+        required:true,
+        enum:["A","B","C","D","E"],
+    },
+    Report:report
+})
+module.export = mongoose.model('student',StudentSchem)
