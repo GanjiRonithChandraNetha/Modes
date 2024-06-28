@@ -14,6 +14,10 @@ const teacherSchema = new mongoose.Schema({
         type:String,
         required:true,
         unique:true
+    },
+    ClassId:{
+        type:Object,
+        
     }
 })
 module.export = mongoose.model('teacher',teacherSchema)

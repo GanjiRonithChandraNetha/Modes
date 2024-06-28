@@ -16,25 +16,6 @@ const StudentReport = new mongoose.Schema({
         required:true,
         unique:true
     },
-    TeacherId:{
-        type:ObjectId,
-        required:true,
-        ref:"teacher"
-    },
-    Group:{
-        type:String,
-        default:"preprimary"
-    },
-    Term:{
-        type:String,
-        required:true,
-        enum:['Entry',"I","II","III"]
-    },
-    Year:{
-        type:Number,
-        enum:[1,2,3],
-        required:true
-    },
     PersonalQA:[{
         question:String,
         answer:String
