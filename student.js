@@ -16,6 +16,10 @@ const StudentReport = new mongoose.Schema({
         required:true,
         unique:true
     },
+    ClassId:{
+        type:String,
+        required:true
+    },
     PersonalQA:[{
         question:String,
         answer:String

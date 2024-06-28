@@ -1,5 +1,10 @@
 const mongoose = require('mongoose')
 const teacherSchema = new mongoose.Schema({
+    teacherId:{
+        type:String,
+        unique:true,
+        required:true
+    },
     teacherName:{
         type:String,
         required:true,
@@ -16,8 +21,8 @@ const teacherSchema = new mongoose.Schema({
         unique:true
     },
     ClassId:{
-        type:Object,
-        
+        type:String,
+        required:true
     }
 })
 module.export = mongoose.model('teacher',teacherSchema)
