@@ -123,7 +123,7 @@ const DevelopmentHistorySchema = new mongoose.Schema({
     SignificantPsycologicalIllness:{type:String},
     AnyNegativeReactions:{type:String}//Any negative reactions to medication
 })
-const stdSchem = new mongoose.Schema({
+const StdSchema = new mongoose.Schema({
     RegnNo:{
         type:String,
         unique:true,
@@ -160,5 +160,6 @@ const stdSchem = new mongoose.Schema({
     PresentingComplaints:PresentingComplaintsSchema ,
     History:HistorySchema,
     FamilyHistory:FamilyHistorySchema,
-    DevelopmentHistory:evelopmentHistorySchema,
+    DevelopmentHistory:DevelopmentHistorySchema,
 })
+module.exports=mongoose.model('StdSchema',StdSchema)

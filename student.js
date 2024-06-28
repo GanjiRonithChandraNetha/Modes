@@ -1,60 +1,61 @@
 const mongoose = require('mongoose')
 const report = new mongoose.Schema({
-    term:{
+    Term:{
         type:String,
         required:true,
         unique:true
     },
-    report:{
+    Comment:{
         type:String,
         default:'No Report Needed'
     }
 })
-const StudentSchem = new mongoose.Schema({
+const StudentReport = new mongoose.Schema({
     RegNo:{
         type:String,
         required:true,
         unique:true
     },
-    Class:{
+    TeacherId:{
+        type:ObjectId,
+        required:true,
+        ref:"teacher"
+    },
+    Group:{
         type:String,
-        required:true
+        default:"preprimary"
+    },
+    Term:{
+        type:String,
+        required:true,
+        enum:['Entry',"I","II","III"]
     },
     Year:{
         type:Number,
         enum:[1,2,3],
         required:true
     },
-    PersonalQs:{type:[String]},
-    SocialQs:{type:[String]},
-    AcademicQs:{type:[String]},
-    OccupationalQs:{type:[String]},
-    RecreationalQs:{type:[String]},
-    PersonalAns:{
-        type:[String],
-        required:true,
-        enum:["Yes","No","C_p1","C_p2","NA","NE"],
-    },
-    SocailAns:{
-        type:[String],
-        required:true,
-        enum:["Yes","No","C_p1","C_p2","NA","NE"],
-    },
-    AcademicAns:{
-        type:[String],
-        required:true,
-        enum:["Yes","No","C_p1","C_p2","NA","NE"],
-    },
-    OccupationalAns:{
-        type:[String],
-        required:true,
-        enum:["Yes","No","C_p1","C_p2","NA","NE"],
-    },
-    RecreationalAns:{
-        type:[String],
-        required:true,
-        enum:["A","B","C","D","E"],
-    },
+    PersonalQA:[{
+        question:String,
+        answer:String
+    }],
+    SocialQA:[{
+        question:String,
+        answer:String
+    }],
+    AcademincQA:[{
+        question:String,
+        answer:String
+    }],
+    OccupationalQA:[{
+        question:String,
+        answer:String
+    }],
+    RecreationalQA:[{
+        question:String,
+        answer:String
+    }],
     Report:report
 })
-module.export = mongoose.model('student',StudentSchem)
+
+module.export = mongoose.model('student',StudentReport)
